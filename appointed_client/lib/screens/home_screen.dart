@@ -14,13 +14,8 @@ class _HomeScreenState extends State<HomeScreen>{
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: const Text('Home'),
-        ),
+      body: const Center(
+        child: Text ('Home Screen'),
       ),
     );
   }
