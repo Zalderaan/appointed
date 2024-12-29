@@ -6,10 +6,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  String apiKey = dotenv.env['apiKey'] ?? '';
-  String appId = dotenv.env['appId'] ?? '';
-  String messagingSenderId = dotenv.env['messagingSenderId'] ?? '';
-  String projectId = dotenv.env['projectId'] ?? '';
+  String apiKey = dotenv.env['FIREBASE_API_KEY'] ?? '';
+  String appId = dotenv.env['FIREBASE_APP_ID'] ?? '';
+  String messagingSenderId = dotenv.env['FIREBASE_MESSAGING_SENDER_ID'] ?? '';
+  String projectId = dotenv.env['FIREBASE_PROJECT_ID'] ?? '';
 
   await Firebase.initializeApp(
     options: FirebaseOptions(
