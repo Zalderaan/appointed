@@ -1,15 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:appointed_client/routes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  String apiKey = dotenv.env['apiKey'] ?? '';
+  String appId = dotenv.env['appId'] ?? '';
+  String messagingSenderId = dotenv.env['messagingSenderId'] ?? '';
+  String projectId = dotenv.env['projectId'] ?? '';
+
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyAEIjeRBjRhv7EJ72JEh8njjn3BnpF_UHc",
-      appId: "1:524926291571:web:184f0699cc391f8b1c6406", 
-      messagingSenderId: "524926291571",
-      projectId: "appointed-dc4fa",
+    options: FirebaseOptions(
+      apiKey: apiKey,
+      appId: appId, 
+      messagingSenderId: messagingSenderId,
+      projectId: projectId,
     )
   );
   runApp(const MyApp());

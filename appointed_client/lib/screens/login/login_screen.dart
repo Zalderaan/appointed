@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget{
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen>{
+  final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context){
     
@@ -15,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen>{
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(70),
-          color: Colors.blue,
+          color: const Color.fromARGB(255, 194, 206, 216),
           child: Column (
             mainAxisSize: MainAxisSize.min, // Shrinks to fit its children
             mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen>{
             children: [
               const Text(
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 30,
                 ),
                 'Welcome to Appointed'
@@ -33,12 +35,16 @@ class _LoginScreenState extends State<LoginScreen>{
                 height: 20,
               ),
               Form(
+                key: _loginFormKey,
                 child: Column (
                   children: [
                     SizedBox(
                       width: 350,
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                           labelText: 'Email',
                         ),
                       ),
@@ -53,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen>{
                       width: 350,
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           labelText: 'Password',
                         )
                       ),
