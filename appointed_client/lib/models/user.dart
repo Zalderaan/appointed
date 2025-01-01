@@ -1,20 +1,30 @@
-class User {
+import 'package:firebase_auth/firebase_auth.dart';
+
+class UserModel {
   final String id;
   final String name;
   final String email;
 
-  User({
+  UserModel({
     required this.id,
     required this.name,
     required this.email,
   });
 
   // factory constructor to create a user object from a map / firestore document
-  factory User.fromMap(Map<String, dynamic> data, String documentId) {
-    return User(
-      id: documentId,
+  factory UserModel.fromMap(Map<String, dynamic> data) {
+    return UserModel(
+      id: data['uid'],
       name:  data['name'],
       email: data['email'],
+    );
+  }
+
+  factory UserModel.fromFirebase(User user) {
+    return UserModel(
+      id: user.uid,
+      name: user.displayName ?? '',
+      email: user.email ?? '',
     );
   }
 
